@@ -32,7 +32,7 @@ namespace SteamAccountManager.Infrastructure.Steam.Remote.Dao
                 throw new IllegalSteamIdsCountException("You have to supply at least 1 steam id!");
             
             // we can only send a maximum of 100 steam ids per request, break it into smaller parts if that's the case
-            var chunks = steamIds.Chunk(100);
+            var chunks = steamIds.Chunk(MAX_STEAM_IDS_PER_REQUEST);
             var playerSummaries = new List<PlayerSummary>();
 
             foreach (var steamIdsChunk in chunks)
